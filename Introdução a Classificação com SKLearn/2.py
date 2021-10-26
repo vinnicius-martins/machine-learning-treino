@@ -1,6 +1,9 @@
 import pandas as pd
 from sklearn.svm import LinearSVC
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import train_test_split
+
+SEED = 20
 
 uri = 'https://gist.github.com/guilhermesilveira/2d2efa37d66b6c84a722ea627a897ced/raw/10968b997d885cbded1c92938c7a9912ba41c615/tracking.csv'
 dados = pd.read_csv(uri)
@@ -32,3 +35,5 @@ previsoes = modelo.predict(teste_x)
 taxa_de_acerto = accuracy_score(teste_y, previsoes) * 100
 
 print(f'A taxa de acerto foi de {taxa_de_acerto:.2f}%')
+
+# treino_x, teste_x, treino_y, teste_y = train_test_split(x,y, random_state= SEED, test_size=0.25, stratify=y)
